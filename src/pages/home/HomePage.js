@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './styles.css'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import { getCocktails } from '../../services/services'
 
@@ -11,7 +12,7 @@ const HomePage = () => {
     }, [])
 
     return (
-        <div>
+        <div className="homepage">
             <div>
                 <div>
                     Header
