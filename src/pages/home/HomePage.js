@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
+import { getCocktails } from '../../services/services'
 
 const HomePage = () => {
 
     useEffect(() => {
-        
+        getCocktails().then(console.log)
     }, [])
 
     return (
