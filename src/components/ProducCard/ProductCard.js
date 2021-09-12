@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button/Button";
 import "./styles.css";
 
 const ProductCard = ({ product, action }) => {
@@ -10,7 +11,8 @@ const ProductCard = ({ product, action }) => {
 
       <div className="product-card__info">
         <h4>{product.strDrink}</h4>
-        <p>S/ {product.precio} </p>
+        <p>S/ {product.precio}0 </p>
+        <Button>Añadir</Button>
       </div>
     </div>
   );

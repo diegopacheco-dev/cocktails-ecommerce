@@ -5,7 +5,7 @@ export const getCocktails = async() => {
     const data = await response.json();
     const drinks = data.drinks.map(drink => ({
         ...drink,
-        precio: Math.ceil(Math.random() * (10) + 10)
+        precio: Math.ceil(Math.random() * (10) + 10) + 0.9,
     }))
     return drinks;
 }
