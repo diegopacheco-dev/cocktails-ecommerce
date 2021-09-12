@@ -1,4 +1,5 @@
 import React from "react";
+import './styles.css'
 import ProductCard from "../ProducCard/ProductCard";
 
 const ProductsList = ({ products = [] }) => {
