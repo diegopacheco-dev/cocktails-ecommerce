@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './styles.css'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import { getCocktails } from '../../services/services'
+import Header from '../../components/Header/Header'
 
 const HomePage = () => {
 
@@ -15,7 +16,7 @@ const HomePage = () => {
         <div className="homepage">
             <div>
                 <div>
-                    Header
+                    <Header />
                 </div>
                 <div>
                     <ProductsList products={products}/>
