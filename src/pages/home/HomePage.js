@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import ProductsList from '../../components/ProductsList/ProductsList'
 import { getCocktails } from '../../services/services'
 
 const HomePage = () => {
 
+    const [products, setProducts] = useState([])
+
     useEffect(() => {
-        getCocktails().then(console.log)
+        getCocktails().then(data => setProducts(data))
     }, [])
 
     return (
@@ -14,7 +17,7 @@ const HomePage = () => {
                     Header
                 </div>
                 <div>
-                    ProductsList
+                    <ProductsList products={products}/>
                 </div>
             </div>
 

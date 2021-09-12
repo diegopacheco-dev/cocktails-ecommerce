@@ -1,4 +1,5 @@
 import React from "react";
+import ProductCard from "../ProducCard/ProductCard";
 
 const ProductsList = ({ products = [] }) => {
   return (
@@ -6,7 +7,7 @@ const ProductsList = ({ products = [] }) => {
 
       {
       products.map((product) => {
-        return <p>Product Card</p>;
+        return <ProductCard key={product.idDrink} product={product} action={() => alert("añadiendo producto")} />
       })
       }
 

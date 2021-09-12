@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import HomePage from './pages/home/HomePage'
-import { getCocktails } from './services/services'
 
 const App = () => {
 
