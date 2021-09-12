@@ -1,12 +1,22 @@
 .button {
     background-color: #131410;
+    color: white;
+    width: 100%;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.button:hover {
+    filter: brightness(1.7);
 }
 
 .button.sm {
     
 }
 .button.md {
-
+    font-size: 1rem;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
 }
 .button.lg {
 
