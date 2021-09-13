@@ -3,6 +3,7 @@ import './styles.css'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import { getCocktails } from '../../services/services'
 import Header from '../../components/Header/Header'
+import ShoppingCart from '../../components/ShoppingCart/ShoppingCart'
 
 const HomePage = () => {
 
@@ -24,8 +25,9 @@ const HomePage = () => {
             </div>
 
             <div>
-                ShoppingCart
+                <ShoppingCart />
             </div>
+
         </div>
     )
 }

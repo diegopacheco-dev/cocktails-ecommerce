@@ -29,7 +29,6 @@
 }
 
 .shopping-cart__body {
-  background-color: blue;
   overflow-y: auto;
   flex: 1;
 }

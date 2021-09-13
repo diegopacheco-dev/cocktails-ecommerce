@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../Button/Button'
+import CartItem from '../CartItem/CartItem'
 import './styles.css'
 
 const ShoppingCart = () => {
@@ -13,7 +14,7 @@ const ShoppingCart = () => {
             </div>
 
             <div className="shopping-cart__body">
-                body
+                <CartItem />
             </div>
 
             <div className="shopping-cart__footer">
