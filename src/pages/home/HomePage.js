@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import './styles.css'
-import ProductsList from '../../components/ProductsList/ProductsList'
-import { getCocktails } from '../../services/services'
-import Header from '../../components/Header/Header'
-import ShoppingCart from '../../components/ShoppingCart/ShoppingCart'
+import React, { useEffect, useState } from "react";
+import "./styles.css";
+import ProductsList from "../../components/ProductsList/ProductsList";
+import { getCocktails } from "../../services/services";
+import Header from "../../components/Header/Header";
+import ShoppingCart from "../../components/ShoppingCart/ShoppingCart";
 
 const HomePage = () => {
+  const [products, setProducts] = useState([]);
+  const [showShoppingCart, setShowShoppingCart] = useState(false);
 
-    const [products, setProducts] = useState([])
+  useEffect(() => {
+    getCocktails().then((data) => setProducts(data));
+  }, []);
 
-    useEffect(() => {
-        getCocktails().then(data => setProducts(data))
-    }, [])
-
-    return (
-        <div className="homepage">
-            <div>
-                <div>
-                    <Header />
-                </div>
-                <div>
-                    <ProductsList products={products}/>
-                </div>
-            </div>
-
-            <div>
-                <ShoppingCart />
-            </div>
-
+  return (
+    <div className="homepage">
+      <div>
+        <div>
+          <Header setShowShoppingCart={setShowShoppingCart}/>
         </div>
-    )
-}
+        <div>
+          <ProductsList products={products} />
+        </div>
+      </div>
 
-export default HomePage
+      
+      <ShoppingCart showShoppingCart={showShoppingCart} setShowShoppingCart={setShowShoppingCart}/>
+    </div>
+  );
+};
+
+export default HomePage;
