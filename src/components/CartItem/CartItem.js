@@ -14,7 +14,7 @@ const CartItem = ({drink, increaseProductQuantity, decreaseProductQuantity, dele
           <button 
           onClick={()=>deleteDrink(drink.id)}
           className="btn-delete-item">
-            <i class="bx bx-x bx-sm"></i>
+            <i className="bx bx-x bx-sm"></i>
           </button>
         </div>
 

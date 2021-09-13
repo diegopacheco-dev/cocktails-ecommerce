@@ -30,7 +30,7 @@ const Header = ({setShowShoppingCart, searchDrinkByName}) => {
         <div className="form-search">
           <input type="text" placeholder="Buscar un Cocktail" value={inputSearch} onChange={handleChange}/>
           <span>
-            <i class="bx bx-search-alt-2 bx-sm"></i>
+            <i className="bx bx-search-alt-2 bx-sm"></i>
           </span>
         </div>
 

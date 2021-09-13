@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContextWrapper from "./contextWrapper";
 
 const ShoppingCartState = ({ children }) => {
@@ -6,6 +6,27 @@ const ShoppingCartState = ({ children }) => {
     drinks: [],
     total_cost: 0,
   });
+
+  const newShoppingCartState = (state) => {
+    setShoppingCart({...state});
+    storeState(state);
+  }
+
+  const loadStorage = () => {
+    const state = localStorage.getItem('shoppingCart');
+    if (state) {
+      setShoppingCart(JSON.parse(state));
+    } else {
+      storeState(shoppingCart);
+    }
+  }
+  const storeState = (state) => {
+    localStorage.setItem('shoppingCart', JSON.stringify(state));
+  }
+  useEffect(() => {
+    loadStorage();
+  }, [])
+
 
   const updateTotalCost = (shoppingCart) => {
     let totalCostUpdate = shoppingCart.drinks.reduce((contador, drink) => {
@@ -25,7 +46,7 @@ const ShoppingCartState = ({ children }) => {
       // SI EL COCKTAIL YA SE ENCUENTRA EN EL CARRITO
       drink.quantity++;
 
-      setShoppingCart({
+      newShoppingCartState({
         total_cost: updateTotalCost(shoppingCartCopy),
         drinks: shoppingCartCopy.drinks,
       });
@@ -39,7 +60,7 @@ const ShoppingCartState = ({ children }) => {
         quantity: 1,
       });
 
-      setShoppingCart({
+      newShoppingCartState({
         drinks: shoppingCartCopy.drinks,
         total_cost: updateTotalCost(shoppingCartCopy),
       });
@@ -52,7 +73,7 @@ const ShoppingCartState = ({ children }) => {
     drink.quantity++;
     shoppingCartCopy.total_cost = updateTotalCost(shoppingCartCopy);
 
-    setShoppingCart({ ...shoppingCartCopy });
+    newShoppingCartState({ ...shoppingCartCopy });
   };
 
   const decreaseProductQuantity = (idDrink) => {
@@ -62,7 +83,7 @@ const ShoppingCartState = ({ children }) => {
     drink.quantity--;
     shoppingCartCopy.total_cost = updateTotalCost(shoppingCartCopy);
 
-    setShoppingCart({ ...shoppingCartCopy });
+    newShoppingCartState({ ...shoppingCartCopy });
   };
 
   const deleteDrink = (idDrink) => {
@@ -72,8 +93,9 @@ const ShoppingCartState = ({ children }) => {
     );
     shoppingCartCopy.total_cost = updateTotalCost(shoppingCartCopy);
 
-    setShoppingCart({ ...shoppingCartCopy });
+    newShoppingCartState({ ...shoppingCartCopy });
   };
+
 
   return (
     <div>

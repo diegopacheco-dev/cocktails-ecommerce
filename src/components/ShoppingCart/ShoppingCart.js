@@ -19,7 +19,7 @@ const ShoppingCart = ({ setShowShoppingCart, showShoppingCart }) => {
           onClick={() => setShowShoppingCart(false)}
           className="btn-hide-cart"
         >
-          <i class="bx bx-chevron-left bx-md"></i>
+          <i className="bx bx-chevron-left bx-md"></i>
         </button>
         <h4>Carrito de Compras</h4>
       </div>

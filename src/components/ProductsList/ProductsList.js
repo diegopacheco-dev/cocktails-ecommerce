@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './styles.css'
 import ProductCard from "../ProducCard/ProductCard";
 import { useContext } from "react/cjs/react.development";
