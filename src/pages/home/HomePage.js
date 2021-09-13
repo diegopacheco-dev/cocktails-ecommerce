@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import ProductsList from "../../components/ProductsList/ProductsList";
-import { getCocktails } from "../../services/services";
+import { getCocktails, searchCocktail } from "../../services/services";
 import Header from "../../components/Header/Header";
 import ShoppingCart from "../../components/ShoppingCart/ShoppingCart";
 import ShoppingCartState from "../../context/ShoppingCartState";
@@ -9,9 +9,32 @@ import ShoppingCartState from "../../context/ShoppingCartState";
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [showShoppingCart, setShowShoppingCart] = useState(false);
+  const [loadingDrinks, setLoadingDrinks] = useState(true);
+
+  const initialCharge = () => {
+    setLoadingDrinks(true);
+    getCocktails().then((data) => {
+      setProducts(data)
+      setLoadingDrinks(false);
+    });
+  }
+
+  const searchDrinkByName = (search) => {
+    if (search.trim().length === 0) {
+      initialCharge();
+      return;
+    }
+    setLoadingDrinks(true);
+    searchCocktail(search).then(data => {
+      setProducts(data);
+      setLoadingDrinks(false);
+
+    })
+  }
+
 
   useEffect(() => {
-    getCocktails().then((data) => setProducts(data));
+    initialCharge();
   }, []);
 
   return (
@@ -19,10 +42,10 @@ const HomePage = () => {
       <div className="homepage">
         <div>
           <div>
-            <Header setShowShoppingCart={setShowShoppingCart} />
+            <Header setShowShoppingCart={setShowShoppingCart} searchDrinkByName={searchDrinkByName} />
           </div>
           <div>
-            <ProductsList products={products} />
+            <ProductsList products={products} loading={loadingDrinks}/>
           </div>
         </div>
 

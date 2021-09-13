@@ -1,10 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ContextWrapper from "../../context/contextWrapper";
 import "./styles.css";
 
-const Header = ({setShowShoppingCart}) => {
+const Header = ({setShowShoppingCart, searchDrinkByName}) => {
 
+  const [inputSearch, setInputSearch] = useState("");
   const {shoppingCart} = useContext(ContextWrapper);
+
+  const handleChange = (e) => {
+    if (e.target.value.length > 15)return;
+    setInputSearch(e.target.value);
+    searchDrinkByName(e.target.value);
+  }
+
 
   return (
     <div className="header">
@@ -19,12 +27,12 @@ const Header = ({setShowShoppingCart}) => {
       </div>
 
       <div className="header__search">
-        <form className="form-search">
-          <input type="text" placeholder="Buscar un Cocktail" />
-          <button>
+        <div className="form-search">
+          <input type="text" placeholder="Buscar un Cocktail" value={inputSearch} onChange={handleChange}/>
+          <span>
             <i class="bx bx-search-alt-2 bx-sm"></i>
-          </button>
-        </form>
+          </span>
+        </div>
 
       </div>
     </div>
