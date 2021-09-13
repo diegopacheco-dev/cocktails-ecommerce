@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import ContextWrapper from "../../context/contextWrapper";
 import "./styles.css";
 
 const Header = ({setShowShoppingCart}) => {
+
+  const {shoppingCart} = useContext(ContextWrapper);
+
   return (
     <div className="header">
       <div className="header__title">
@@ -10,7 +14,7 @@ const Header = ({setShowShoppingCart}) => {
         onClick={() => setShowShoppingCart(true)}
         className="btn-showShoppingCart">
           <i className='bx bxs-cart bx-sm'></i>
-          <span className="tooltip">{0}</span>
+          <span className="tooltip">{shoppingCart.drinks.length}</span>
         </button>
       </div>
 
