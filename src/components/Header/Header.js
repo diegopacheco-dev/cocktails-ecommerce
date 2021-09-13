@@ -1,11 +1,15 @@
 import React from "react";
 import "./styles.css";
 
-const Header = () => {
+const Header = ({showShoppingCart}) => {
   return (
     <div className="header">
       <div className="header__title">
         <h2>Cocktails Ecommerce</h2>
+        <button className="btn-showShoppingCart">
+          <i className='bx bxs-cart bx-sm'></i>
+          <span className="tooltip">{0}</span>
+        </button>
       </div>
 
       <div className="header__search">
