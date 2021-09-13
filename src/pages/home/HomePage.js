@@ -4,6 +4,7 @@ import ProductsList from "../../components/ProductsList/ProductsList";
 import { getCocktails } from "../../services/services";
 import Header from "../../components/Header/Header";
 import ShoppingCart from "../../components/ShoppingCart/ShoppingCart";
+import ShoppingCartState from "../../context/ShoppingCartState";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -14,19 +15,23 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="homepage">
-      <div>
+    <ShoppingCartState>
+      <div className="homepage">
         <div>
-          <Header setShowShoppingCart={setShowShoppingCart}/>
+          <div>
+            <Header setShowShoppingCart={setShowShoppingCart} />
+          </div>
+          <div>
+            <ProductsList products={products} />
+          </div>
         </div>
-        <div>
-          <ProductsList products={products} />
-        </div>
-      </div>
 
-      
-      <ShoppingCart showShoppingCart={showShoppingCart} setShowShoppingCart={setShowShoppingCart}/>
-    </div>
+        <ShoppingCart
+          showShoppingCart={showShoppingCart}
+          setShowShoppingCart={setShowShoppingCart}
+        />
+      </div>
+    </ShoppingCartState>
   );
 };
 

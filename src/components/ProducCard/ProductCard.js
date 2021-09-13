@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Button/Button";
 import "./styles.css";
 
-const ProductCard = ({ product, action }) => {
+const ProductCard = ({ product, addProductToShoppingCart }) => {
   return (
     <div className="product-card">
       <div className="product-card__img">
@@ -12,7 +12,9 @@ const ProductCard = ({ product, action }) => {
       <div className="product-card__info">
         <h4>{product.strDrink}</h4>
         <p>S/ {product.precio}0 </p>
-        <Button>Añadir</Button>
+        <Button
+        action={() => addProductToShoppingCart(product)}
+        >Añadir</Button>
       </div>
     </div>
   );

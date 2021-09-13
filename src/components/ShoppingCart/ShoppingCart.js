@@ -5,7 +5,12 @@ import CartItem from "../CartItem/CartItem";
 import "./styles.css";
 
 const ShoppingCart = ({ setShowShoppingCart, showShoppingCart }) => {
-  const { shoppingCart, increaseProductQuantity, decreaseProductQuantity } = useContext(ContextWrapper);
+  const {
+    shoppingCart,
+    increaseProductQuantity,
+    decreaseProductQuantity,
+    deleteDrink,
+  } = useContext(ContextWrapper);
 
   return (
     <div className={`shopping-cart ${showShoppingCart && "--show"}`}>
@@ -20,15 +25,19 @@ const ShoppingCart = ({ setShowShoppingCart, showShoppingCart }) => {
       </div>
 
       <div className="shopping-cart__body">
-        {shoppingCart.drinks.map((drink) => (
-          <CartItem
-            key={drink.id}
-            drink={drink}
-            increaseProductQuantity={increaseProductQuantity}
-            decreaseProductQuantity={decreaseProductQuantity}
-
-          />
-        ))}
+        {shoppingCart.drinks.length === 0 ? (
+          <p>Carrito vacio</p>
+        ) : (
+          shoppingCart.drinks.map((drink) => (
+            <CartItem
+              key={drink.id}
+              drink={drink}
+              increaseProductQuantity={increaseProductQuantity}
+              decreaseProductQuantity={decreaseProductQuantity}
+              deleteDrink={deleteDrink}
+            />
+          ))
+        )}
       </div>
 
       <div className="shopping-cart__footer">
